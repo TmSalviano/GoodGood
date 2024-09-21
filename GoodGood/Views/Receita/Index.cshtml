@@ -1,0 +1,36 @@
+@model GoodGood.Models.Receita
+
+<h1>@Model.Nome</h1>
+
+<tabel>
+    <tr>
+        <th>Categoria 1</th>
+        <td>@Model.Categoria1</td>
+    </tr>
+    <tr>
+        <th>Categoria 2</th>
+        <td>@Model.Categoria2</td>
+    </tr>
+</tabel>
+
+
+h2>Ingredients:</h2>
+<ul>
+    @foreach (var receitaIngrediente in Model.IngredientesDaReceita)
+    {
+        <li>
+            <strong>Ingredient:</strong> @receitaIngrediente.Ingrediente.Name
+            <br />
+            <strong>Quantity:</strong> @receitaIngrediente.Quantidade
+        </li>
+        <li>Calorias: @receitaIngrediente.Ingrediente.CaloriasEmKcal Kcal.</li>
+    }
+</ul>
+
+<h2>Mode of Preparation:</h2>
+<ul>
+    @foreach (var step in Model.ModeDePreparo)
+    {
+        <li>@step</li>
+    }
+</ul>
