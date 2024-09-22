@@ -10,6 +10,6 @@ namespace GoodGood.Models {
         [NotNull]
         public  Ingrediente? Ingrediente {get; set;}
 
-        public int Quantidade {get; set;}
+        public float Quantidade {get; set;}
     }
 }

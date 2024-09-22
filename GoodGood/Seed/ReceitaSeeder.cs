@@ -25,7 +25,7 @@ public class ReceitaSeeder {
                     CarboidratosEmG = 5,
                     GordurasEmG = 0.2f,
                     ProteinasEmG = 0.4f,
-                    UnidadeDeMedida = new List<string> { "unidades(60g)", "Unidade2", "Unidade3",}
+                    UnidadeDeMedida = new List<string> { "unidades(60g)",}
                 },
 
                new Ingrediente() {
@@ -35,7 +35,7 @@ public class ReceitaSeeder {
                     CarboidratosEmG = 0,
                     GordurasEmG = 0,
                     ProteinasEmG = 0,
-                    UnidadeDeMedida = new List<string> { "Unidade1", "Unidade2", "Unidade3",}
+                    UnidadeDeMedida = new List<string> { "Unidade1",}
                 },
 
                 new Ingrediente() {
@@ -46,7 +46,7 @@ public class ReceitaSeeder {
                     GordurasEmG = 0,
                     
                     ProteinasEmG = 0,
-                    UnidadeDeMedida = new List<string> { "Unidade1", "Unidade2", "Unidade3",}
+                    UnidadeDeMedida = new List<string> { "Unidade1",}
                 },
             };
 
