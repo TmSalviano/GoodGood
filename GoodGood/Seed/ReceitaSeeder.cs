@@ -3,39 +3,60 @@ using GoodGood.Models;
 using Microsoft.EntityFrameworkCore;
 
 public class ReceitaSeeder {
-    public static async Task Seed1ItemAsync(IServiceProvider serviceProvider) {
+    public static async Task SeedComidaDb(IServiceProvider serviceProvider) {
 
         using (var dbContext = new ComidaDbContext(serviceProvider.GetRequiredService<DbContextOptions<ComidaDbContext>>()))
         {
-            if (dbContext.Ingredientes.Any())  {
+          await SeedIngredientDbSet(dbContext);
+          await SeedReceitaDbSet(dbContext);
+        }
+    }
+
+    private static async Task SeedIngredientDbSet(ComidaDbContext dbContext) {
+        if (dbContext.Ingredientes.Any())  {
                 return;
             }
 
-            var ingrediente1 = new Ingrediente() {
-                Id = 1,
-                Name = "Ingrediente1",
-                CaloriasEmKcal = 0,
-                CarboidratosEmG = 0,
-                GordurasEmG = 0,
-                ProteinasEmG = 0,
-                UnidadeDeMedida = new List<string> { "Unidade1", "Unidade2", "Unidade3",}
+            var ingredientes = new List<Ingrediente>(){
+                new Ingrediente() {
+                    Id = 1,
+                    Name = "Morango",
+                    CaloriasEmKcal = 20,
+                    CarboidratosEmG = 5,
+                    GordurasEmG = 0.2f,
+                    ProteinasEmG = 0.4f,
+                    UnidadeDeMedida = new List<string> { "unidades(60g)", "Unidade2", "Unidade3",}
+                },
+
+               new Ingrediente() {
+                    Id = 2,
+                    Name = "Ingrediente2",
+                    CaloriasEmKcal = 0,
+                    CarboidratosEmG = 0,
+                    GordurasEmG = 0,
+                    ProteinasEmG = 0,
+                    UnidadeDeMedida = new List<string> { "Unidade1", "Unidade2", "Unidade3",}
+                },
+
+                new Ingrediente() {
+                    Id = 1,
+                    Name = "Ingrediente1",
+                    CaloriasEmKcal = 0,
+                    CarboidratosEmG = 0,
+                    GordurasEmG = 0,
+                    
+                    ProteinasEmG = 0,
+                    UnidadeDeMedida = new List<string> { "Unidade1", "Unidade2", "Unidade3",}
+                },
             };
 
-            var ingrediente2 = new Ingrediente() {
-                Id = 2,
-                Name = "Ingrediente2",
-                CaloriasEmKcal = 0,
-                CarboidratosEmG = 0,
-                GordurasEmG = 0,
-                ProteinasEmG = 0,
-                UnidadeDeMedida = new List<string> { "Unidade1", "Unidade2", "Unidade3",}
-            };
 
-            await dbContext.Ingredientes.AddRangeAsync([ingrediente1, ingrediente2]);
-            await dbContext.SaveChangesAsync();
+        await dbContext.Ingredientes.AddRangeAsync(ingredientes);
+        await dbContext.SaveChangesAsync();
+    }
 
-
-            if (dbContext.Receitas.Any()) {
+    private static async Task SeedReceitaDbSet(ComidaDbContext dbContext) {
+                 if (dbContext.Receitas.Any()) {
                 return;
             }
 
@@ -53,5 +74,4 @@ public class ReceitaSeeder {
             await dbContext.Receitas.AddAsync(receita);
             await dbContext.SaveChangesAsync();
         }
-    }
 }

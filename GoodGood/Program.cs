@@ -12,7 +12,7 @@ builder.Services.AddDbContext<ComidaDbContext>( options => {
 var app = builder.Build();
 
 await using (var scope = app.Services.CreateAsyncScope()) {
-    await ReceitaSeeder.Seed1ItemAsync(scope.ServiceProvider);
+    await ReceitaSeeder.SeedComidaDb(scope.ServiceProvider);
 }
 
 // Configure the HTTP request pipeline.
